@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
+
 const initialState = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -11,20 +12,19 @@ export const contactSlice = createSlice({
   initialState,
   reducers: {
     addContact: (state, action) => {
-      //   state.contacts.push(action.payload);
       state.unshift({
         id: nanoid(),
         name: action.payload.name,
         number: action.payload.number,
       });
     },
+
     deleteContact: (state, action) => {
       return state.filter(el => el.id !== action.payload);
     },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { addContact, deleteContact } = contactSlice.actions;
 
 export default contactSlice.reducer;

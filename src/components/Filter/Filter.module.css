@@ -14,5 +14,8 @@
 }
 
 .input:focus {
-  outline: 5px solid blue;
+  border: 5px solid blue;
+  border-radius: 5px;
+  padding: 0;
+  outline: none;
 }
