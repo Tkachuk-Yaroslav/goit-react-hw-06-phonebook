@@ -1,8 +1,12 @@
+import { useDispatch, useSelector } from 'react-redux';
 import css from './Filter.module.css';
 
 import React from 'react';
+import { search } from 'redux/filter/filterSlice';
 
-const Filter = ({ value, onChange }) => {
+const Filter = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(state => state.filter);
   return (
     <div>
       <label htmlFor="filterInput" className={css.label}>
@@ -11,8 +15,8 @@ const Filter = ({ value, onChange }) => {
           type="text"
           className={css.input}
           id="filterInput"
-          value={value}
-          onChange={onChange}
+          value={filter}
+          onChange={evt => dispatch(search(evt.currentTarget.value))}
         />
       </label>
     </div>
